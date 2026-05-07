@@ -14,49 +14,48 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.novalogistic.DTO.PersonalDTO;
-import com.example.novalogistic.model.Personal;
-import com.example.novalogistic.service.PersonalService;
+import com.example.novalogistic.DTO.ReclamoDTO;
+import com.example.novalogistic.model.Reclamo;
+import com.example.novalogistic.service.ReclamoService;
 
 
 @RestController
-@RequestMapping("/api/v1/personal")
-public class PersonalController 
-{
+@RequestMapping("/api/v1/reclamo")
+public class ReclamoController {
     @Autowired
-    private PersonalService personalService;
+    private ReclamoService reclamoService;
 
     @GetMapping()
-    public ResponseEntity<List<PersonalDTO>> listarAsientos() {
-        List<PersonalDTO> personals = personalService.FindAll();
-        if (personals.isEmpty()) {
+    public ResponseEntity<List<ReclamoDTO>> listarAsientos() {
+        List<ReclamoDTO> reclamo = reclamoService.findAll();
+        if (reclamo.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
-        return ResponseEntity.ok(personals);
+        return ResponseEntity.ok(reclamo);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PersonalDTO> buscarAsientoPorId(@PathVariable Long id) {
+    public ResponseEntity<ReclamoDTO> buscarAsientoPorId(@PathVariable Long id) {
         try {
-            PersonalDTO personals = personalService.SearchById(id);
-            return ResponseEntity.ok(personals);
+            ReclamoDTO reclamo = reclamoService.findById(id);
+            return ResponseEntity.ok(reclamo);
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
     }
 
     @PostMapping()
-    public ResponseEntity<Personal> guardar(@RequestBody Personal personal) {
-        Personal personals = personalService.save(personal);
-        return ResponseEntity.status(HttpStatus.CREATED).body(personals);
+    public ResponseEntity<Reclamo> guardar(@RequestBody Reclamo reclamos) {
+        Reclamo reclamo = reclamoService.save(reclamos);
+        return ResponseEntity.status(HttpStatus.CREATED).body(reclamo);
     }
 
 
      @PutMapping("/{id}")
-     public ResponseEntity<Personal> actualizar(@PathVariable Long id, @RequestBody Personal personal) {
+     public ResponseEntity<Reclamo> actualizar(@PathVariable Long id, @RequestBody Reclamo reclamos) {
         try {
-            Personal personalActualizado = personalService.updatePersonal(id, personal);
-            return ResponseEntity.ok(personalActualizado);
+            Reclamo reclamo = reclamoService.updateReclamo(id, reclamos);
+            return ResponseEntity.ok(reclamo);
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
@@ -65,11 +64,12 @@ public class PersonalController
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         try {
-            personalService.deleteById(id);
+            reclamoService.deleteById(id);
             return ResponseEntity.noContent().build();
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
     }
+
 
 }

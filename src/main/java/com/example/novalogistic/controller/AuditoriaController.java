@@ -14,49 +14,50 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.novalogistic.DTO.PersonalDTO;
-import com.example.novalogistic.model.Personal;
-import com.example.novalogistic.service.PersonalService;
+import com.example.novalogistic.DTO.AuditoriaDTO;
+import com.example.novalogistic.model.Auditoria;
+import com.example.novalogistic.service.AuditoriaService;
 
+import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/v1/personal")
-public class PersonalController 
-{
+@RequestMapping("/api/v1/auditoria")
+public class AuditoriaController {
+
     @Autowired
-    private PersonalService personalService;
+    private AuditoriaService auditoriaService;
 
     @GetMapping()
-    public ResponseEntity<List<PersonalDTO>> listarAsientos() {
-        List<PersonalDTO> personals = personalService.FindAll();
-        if (personals.isEmpty()) {
+    public ResponseEntity<List<AuditoriaDTO>> listarAsientos() {
+        List<AuditoriaDTO> Auditorias = auditoriaService.findAll();
+        if (Auditorias.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
-        return ResponseEntity.ok(personals);
+        return ResponseEntity.ok(Auditorias);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PersonalDTO> buscarAsientoPorId(@PathVariable Long id) {
+    public ResponseEntity<AuditoriaDTO> buscarAsientoPorId(@PathVariable Long id) {
         try {
-            PersonalDTO personals = personalService.SearchById(id);
-            return ResponseEntity.ok(personals);
+            AuditoriaDTO Auditorias = auditoriaService.findById(id);
+            return ResponseEntity.ok(Auditorias);
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
     }
 
     @PostMapping()
-    public ResponseEntity<Personal> guardar(@RequestBody Personal personal) {
-        Personal personals = personalService.save(personal);
-        return ResponseEntity.status(HttpStatus.CREATED).body(personals);
+    public ResponseEntity<Auditoria> guardar( @Valid@RequestBody Auditoria auditoria) {
+        Auditoria Auditorias = auditoriaService.save(auditoria);
+        return ResponseEntity.status(HttpStatus.CREATED).body(Auditorias);
     }
 
 
      @PutMapping("/{id}")
-     public ResponseEntity<Personal> actualizar(@PathVariable Long id, @RequestBody Personal personal) {
+     public ResponseEntity<Auditoria> actualizar(@PathVariable Long id, @RequestBody Auditoria auditoria) {
         try {
-            Personal personalActualizado = personalService.updatePersonal(id, personal);
-            return ResponseEntity.ok(personalActualizado);
+            Auditoria auditoriaactualizado = auditoriaService.updateAuditoria(id, auditoria);
+            return ResponseEntity.ok(auditoriaactualizado);
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
@@ -65,11 +66,10 @@ public class PersonalController
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         try {
-            personalService.deleteById(id);
+            auditoriaService.deleteById(id);
             return ResponseEntity.noContent().build();
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
     }
-
 }
