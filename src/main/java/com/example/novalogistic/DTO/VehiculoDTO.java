@@ -1,4 +1,4 @@
-package com.example.novalogistic.dto;
+package com.example.novalogistic.DTO;
 
 import lombok.Data; 
 @Data
