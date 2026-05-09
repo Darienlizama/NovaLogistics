@@ -8,15 +8,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Entity
 @Data
 @Table(name="clientes")
-public class Cliente {
+public class Cliente
+{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotBlank(message = "El rut no puede estar vacio!")
     @Column(unique = true)
@@ -32,5 +34,7 @@ public class Cliente {
     private String correo;
 
     @NotBlank(message ="el telefono no puede estar vacio!" )
+    @Size(min = 10 , message = "")
     private String telefono;
+    
 }

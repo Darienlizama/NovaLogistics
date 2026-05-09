@@ -37,7 +37,7 @@ public class PersonalService {
                 .toList();
     }
 
-    public PersonalDTO SearchById(long id){
+    public PersonalDTO SearchById(Long id){
         log.info("...la auditoria se esta ejecutando");
          Personal personal = personalRepository.findById(id)
         .orElseThrow(() -> new RuntimeException("Trabajador no encontrado"));
@@ -60,7 +60,8 @@ public class PersonalService {
         log.info("...la auditoria se esta actualizando");
         Personal PersonalUpdate = personalRepository.findById(id)
          .orElseThrow(() -> new RuntimeException("Trabajador no encontrado"));
-        
+
+            PersonalUpdate.setRut(personal.getRut());
             PersonalUpdate.setApellido(personal.getApellido());
             PersonalUpdate.setNombre(personal.getNombre());
             PersonalUpdate.setCargo(personal.getCargo());

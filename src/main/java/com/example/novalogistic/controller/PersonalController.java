@@ -26,7 +26,7 @@ public class PersonalController
     @Autowired
     private PersonalService personalService;
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<PersonalDTO>> listarAsientos() {
         List<PersonalDTO> personals = personalService.FindAll();
         if (personals.isEmpty()) {
@@ -45,7 +45,7 @@ public class PersonalController
         }
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Personal> guardar(@RequestBody Personal personal) {
         Personal personals = personalService.save(personal);
         return ResponseEntity.status(HttpStatus.CREATED).body(personals);

@@ -18,7 +18,7 @@ public class vehiculos
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotBlank(message = "La patente no puede estar vacio!")
     @Column(unique = true)

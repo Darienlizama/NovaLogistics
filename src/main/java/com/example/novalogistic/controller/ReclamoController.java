@@ -44,7 +44,7 @@ public class ReclamoController {
         }
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Reclamo> guardar(@RequestBody Reclamo reclamos) {
         Reclamo reclamo = reclamoService.save(reclamos);
         return ResponseEntity.status(HttpStatus.CREATED).body(reclamo);

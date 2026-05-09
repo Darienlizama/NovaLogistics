@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
 public class Auditoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @ManyToOne
     @NotBlank(message = "el usuario no puede estar vacio")

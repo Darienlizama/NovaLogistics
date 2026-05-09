@@ -21,7 +21,7 @@ public class Personal
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(unique = true ,nullable = false)
     @NotBlank(message = "El rut no puede estar vacio!")

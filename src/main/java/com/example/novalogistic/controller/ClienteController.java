@@ -1,7 +1,6 @@
 package com.example.novalogistic.controller;
 import com.example.novalogistic.DTO.ClienteDTO;
 import com.example.novalogistic.model.Cliente;
-import com.example.novalogistic.model.Paquete;
 import com.example.novalogistic.service.ClienteService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

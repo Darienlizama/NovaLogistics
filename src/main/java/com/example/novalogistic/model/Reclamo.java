@@ -19,11 +19,11 @@ import lombok.NoArgsConstructor;
 public class Reclamo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotBlank(message = "el id no debe estar vacio")
     @Column(unique = true ,nullable = false)
-    private long id_cliente;
+    private Long id_cliente;
 
 
     @NotBlank(message = "el titulo no debe estar vacio ")

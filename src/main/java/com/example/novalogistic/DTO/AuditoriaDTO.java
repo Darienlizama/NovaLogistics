@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Data
 public class AuditoriaDTO {
-    private long id;
+    private Long id;
     private Cliente usuario;
     private String accion_realizada;
     private LocalDateTime fecha_evento;
