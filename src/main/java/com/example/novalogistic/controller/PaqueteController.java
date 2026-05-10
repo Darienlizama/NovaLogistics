@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Slf4j
 @RestController
-@RequestMapping("/paquetes")
+@RequestMapping("/api/v1/paquete")
 public class PaqueteController {
     @Autowired
     private PaqueteService paqueteService;

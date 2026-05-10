@@ -43,13 +43,21 @@ public class PrecioService
         return precioRepository.save(precioExistente);
     }
     
-    private PrecioDTO convertirADTO (Precio precio) 
+    public PrecioDTO convertirADTO (Precio precio) 
     {
         PrecioDTO dto = new PrecioDTO();
         dto.setId(precio.getId());
         dto.setPrecio_base(precio.getPrecio_base());
         return dto;
     }   
+
+    public PrecioDTO buscarPorid(Integer id){
+        Precio precio= precioRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Precio no encontrado con la ID: " + id));
+
+        return convertirADTO(precio);
+    }
+
  
 
 }

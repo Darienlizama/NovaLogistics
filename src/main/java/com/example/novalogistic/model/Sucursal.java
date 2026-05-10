@@ -1,8 +1,5 @@
 package com.example.novalogistic.model;
-
-
 import jakarta.persistence.*;
-
 import jakarta.validation.constraints.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;

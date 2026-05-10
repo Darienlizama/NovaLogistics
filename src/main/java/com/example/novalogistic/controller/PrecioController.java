@@ -36,7 +36,7 @@ public class PrecioController
     {
         try
         {
-            PrecioDTO precios = precioService.SearchById(id);
+            PrecioDTO precios = precioService.buscarPorid(id);
             return ResponseEntity.ok(precios);
         }
         catch (Exception e)

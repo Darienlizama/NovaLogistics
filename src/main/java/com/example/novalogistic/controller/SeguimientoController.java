@@ -12,7 +12,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/seguimiento")
+@RequestMapping("/api/v1/seguimiento")
 public class SeguimientoController {
 
     @Autowired

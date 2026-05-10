@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Slf4j
 @RestController
-@RequestMapping("/envio")
+@RequestMapping("/api/v1/envios")
 public class EnvioController {
     @Autowired
     private EnvioService envioService;

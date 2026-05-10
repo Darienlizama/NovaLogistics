@@ -47,5 +47,25 @@ public class SucursalService
         return dto;
 
     }
+    
 
+    public Sucursal guardarSucursal(Sucursal sucursal) {
+        Sucursal nuevaSucursal = sucursalRepository.save(sucursal);
+        log.info("Nueva sucursal guardada exitosamente con ID: {}", nuevaSucursal.getId());
+        return nuevaSucursal;
+    }
+
+  
+    public Sucursal actualizarSucursal(Integer id, Sucursal sucursalDetalles) {
+        Sucursal sucursalExistente = sucursalRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("No se encontró la sucursal con ID: " + id));
+
+        sucursalExistente.setDireccion(sucursalDetalles.getDireccion());
+        sucursalExistente.setCiudad(sucursalDetalles.getCiudad());
+        sucursalExistente.setComuna(sucursalDetalles.getComuna());
+
+        log.info("Sucursal con ID: {} actualizada", id);
+        return sucursalRepository.save(sucursalExistente);
+    }
+    
 }
