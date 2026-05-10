@@ -1,5 +1,5 @@
+package com.example.novalogistic.controller;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,35 +11,33 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.example.novaLogistic.dto.VehiculoDTO;
-import com.example.novaLogistic.model.Vehiculo;
-import com.example.novaLogistic.service.VehiculoService;
+import com.example.novalogistic.DTO.VehiculoDTO;
+import com.example.novalogistic.model.Vehiculo;
+import com.example.novalogistic.service.VehiculoService;
 
 @RestController
 @RequestMapping("/api/v1/vehiculo")
-
-public class VehiculoController 
-{
+public class VehiculoController {
     @Autowired
     private VehiculoService vehiculoService;
 
-    @GetMapping
-    public ResponseEntity<List<VehiculoDTO>> listarVehiculo()
-    {
-        List<VehiculoDTO> vehiculos = vehiculoService.FindAll();
-        if(vehiculos.isEmpty())
-            {
-                return ResponseEntity.noContent().build();
-            }
-            return ResponseEntity.ok(vehiculos);
+    
+        @GetMapping
+    public ResponseEntity<List<VehiculoDTO>> listarVehiculo() {
+        List<VehiculoDTO> vehiculos = vehiculoService.obtenerVehiculo();
+        
+        if (vehiculos == null || vehiculos.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        
+        return ResponseEntity.ok(vehiculos);
     }
     @GetMapping("/{id}")
     public ResponseEntity<VehiculoDTO> buscarVehiculoPorId(@PathVariable Integer id)
     {
         try
         {
-            VehiculoDTO vehiculos = vehiculoService.SearchById(id);
+            VehiculoDTO vehiculos = vehiculoService.buscarPorId(id);
             return ResponseEntity.ok(vehiculos);
         }
         catch (Exception e)
@@ -52,7 +50,7 @@ public class VehiculoController
     @PostMapping
     public ResponseEntity<Vehiculo> guardarVehiculo(@RequestBody Vehiculo vehiculo)
     {
-        Vehiculo nuevoVehiculo = vehiculoService.Save(vehiculo);
+        Vehiculo nuevoVehiculo = vehiculoService.guardarVehiculo(vehiculo);
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevoVehiculo);
     }
     @PutMapping("/{id}")
@@ -60,7 +58,7 @@ public class VehiculoController
     {
         try
         {
-            Vehiculo vehiculoActualizado = vehiculoService.Update(id, vehiculo);
+            Vehiculo vehiculoActualizado = vehiculoService.actualizarVehiculo(id, vehiculo);
             return ResponseEntity.ok(vehiculoActualizado);
         }
         catch (Exception e)
@@ -73,7 +71,7 @@ public class VehiculoController
     {
         try
         {
-            vehiculoService.Delete(id);
+            vehiculoService.eliminarVehiculo(id);
             return ResponseEntity.noContent().build();  
         }
         catch (Exception e)
