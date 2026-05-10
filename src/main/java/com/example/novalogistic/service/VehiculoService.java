@@ -45,11 +45,11 @@ public class VehiculoService
     public Vehiculo actualizarVehiculo(Integer id, Vehiculo nuevoVehiculo)
     {
         log.info("Actualizando el vehiculo con ID {}", id);
-
         Vehiculo vehiculoExistente = vehiculoRepository.findById(id)
         .orElseThrow(() -> new RuntimeException("No se puede actualizar, razon: El vehiculo no se ha encontrado con ID: " + id));
-
         vehiculoExistente.setPatente(nuevoVehiculo.getPatente());
+        vehiculoExistente.setMarca(nuevoVehiculo.getMarca());
+        vehiculoExistente.setModelo(nuevoVehiculo.getModelo()); 
         return vehiculoRepository.save(vehiculoExistente);
     }
 
@@ -59,6 +59,8 @@ public class VehiculoService
         VehiculoDTO dto = new VehiculoDTO();
         dto.setId(vehiculo.getId());
         dto.setPatente(vehiculo.getPatente());
+        dto.setMarca(vehiculo.getMarca());
+        dto.setModelo(vehiculo.getModelo());
         return dto;
     }
     public VehiculoDTO buscarPorId(Integer id)
