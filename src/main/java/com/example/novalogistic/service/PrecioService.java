@@ -1,14 +1,10 @@
 package com.example.novalogistic.service;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import com.example.novalogistic.DTO.PrecioDTO;
 import com.example.novalogistic.model.Precio;
 import com.example.novalogistic.repository.PrecioRepository;
-import com.example.novalogistic.dto.PrecioDTO;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -55,6 +51,5 @@ public class PrecioService
         return dto;
     }   
  
-    
 
 }

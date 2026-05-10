@@ -1,8 +1,5 @@
 package com.example.novalogistic.controller;
-
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,14 +11,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.example.novaLogistic.dto.PrecioDTO;
-import com.example.novaLogistic.model.Precio;
-import com.example.novaLogistic.service.PrecioService;
-
-
-
-
+import com.example.novalogistic.DTO.PrecioDTO;
+import com.example.novalogistic.model.Precio;
+import com.example.novalogistic.service.PrecioService;
 @RestController
 @RequestMapping("/api/v1/precio")
 public class PrecioController 
@@ -32,7 +24,7 @@ public class PrecioController
     @GetMapping
     public ResponseEntity<List<PrecioDTO>> listarPrecio()
     {
-        List<PrecioDTO> precios = precioService.FindAll();
+        List<PrecioDTO> precios = precioService.totalPrecios();
         if(precios.isEmpty())
             {
                 return ResponseEntity.noContent().build();
@@ -57,7 +49,7 @@ public class PrecioController
     @PostMapping
     public ResponseEntity<Precio> guardarPrecio(@RequestBody Precio precio)
     {
-        Precio nuevoPrecio = precioService.save(precio);
+        Precio nuevoPrecio = precioService.guardarPrecio(precio);
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevoPrecio);
     }
 
@@ -66,7 +58,7 @@ public class PrecioController
     {
         try
         {
-            Precio precioActualizado = precioService.updatePrecio(id, precio);
+            Precio precioActualizado = precioService.actualizarPrecio(id, precio);
             return ResponseEntity.ok(precioActualizado);
         }
         catch (Exception e)
@@ -80,7 +72,7 @@ public class PrecioController
     {
         try
         {       
-            precioService.deletePrecio(id);
+            precioService.eliminarPrecio(id);
             return ResponseEntity.noContent().build();
         }
         catch (Exception e)

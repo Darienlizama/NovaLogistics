@@ -1,7 +1,5 @@
 package com.example.novalogistic.DTO;
-
 import lombok.Data;
-
 @Data
 public class ClienteDTO {
     private String rut;
@@ -9,5 +7,5 @@ public class ClienteDTO {
     private String apellido;
     private String correo;
     private String telefono;
-    private String categoriaCliente;
+
 }

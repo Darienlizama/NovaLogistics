@@ -1,12 +1,10 @@
 package com.example.novalogistic.service;
-
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.novalogistic.dto.SucursalDTO;
+import com.example.novalogistic.DTO.SucursalDTO;
 import com.example.novalogistic.model.Sucursal;
 import com.example.novalogistic.repository.SucursalRepository;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Service

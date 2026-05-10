@@ -1,5 +1,4 @@
 package com.example.novalogistic.model;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,19 +7,22 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 @Entity
 @Data
 @Table(name="clientes")
-public class Cliente
-{
+public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
-    @NotBlank(message = "El rut no puede estar vacio!")
+    @NotBlank(message = "El RUT no puede estar vacío")
+    @Pattern(
+        regexp = "^[0-9]{7,8}[0-9Kk]$", 
+        message = "El RUT debe tener entre 8 y 9 dígitos, sin puntos ni guion (ej: 12345678K)"
+    )
     @Column(unique = true)
     private String rut;
 
@@ -34,7 +36,5 @@ public class Cliente
     private String correo;
 
     @NotBlank(message ="el telefono no puede estar vacio!" )
-    @Size(min = 10 , message = "")
     private String telefono;
-    
 }

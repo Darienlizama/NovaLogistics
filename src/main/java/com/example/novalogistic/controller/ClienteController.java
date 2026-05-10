@@ -20,7 +20,7 @@ public class ClienteController {
 
 
     // guardar
-    @PostMapping("/registrar")
+    @PostMapping
     public ResponseEntity<Cliente> crearCliente(@Valid @RequestBody Cliente cliente) {
         Cliente nuevo = clienteService.guardarCliente(cliente);
         return new ResponseEntity<>(nuevo, HttpStatus.CREATED);
@@ -40,5 +40,16 @@ public class ClienteController {
         ClienteDTO dto = clienteService.obtenerClientePorId(id);
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
+    //eliminar
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String>eliminarCliente(@PathVariable Long id){
+        clienteService.eliminarCliente(id);
+        return ResponseEntity.ok("El Cliente con el Id: "+id+" Fue eliminado con exito");
+    }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Cliente>actualizarCliente(@PathVariable Long id,@RequestBody Cliente cliente){
+        Cliente nuevo = clienteService.actualizarCliente(id, cliente);
+        return ResponseEntity.ok(nuevo);
+    }
 }

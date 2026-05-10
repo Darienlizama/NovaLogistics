@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-
-
 @Slf4j
 @RestController
 @RequestMapping("/paquetes")
@@ -36,7 +34,7 @@ public class PaqueteController {
     //listar
     @GetMapping()
     public ResponseEntity<List<Paquete>>listarPaquetes(){
-        log.info("consultando lista de paquetes");
+        log.info("consultando lista de envios");
         List<Paquete>paquetes=paqueteService.totalPaquetes();
         return new  ResponseEntity<>(paquetes,HttpStatus.OK);
 
@@ -49,9 +47,9 @@ public class PaqueteController {
     }
 
     @DeleteMapping("/{id}")
-        public ResponseEntity<String>eliminar(@PathVariable Long id){
-            paqueteService.eliminarPaquetes(id);
-            return ResponseEntity.ok("El Paquete con el ID:"+id+"fue eliminado con exito");
+    public ResponseEntity<String>eliminar(@PathVariable Long id){
+        paqueteService.eliminarPaquetes(id);
+        return ResponseEntity.ok("El Paquete con el ID:"+id+" fue eliminado con exito");
 
 
     }
