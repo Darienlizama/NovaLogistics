@@ -9,7 +9,7 @@ import com.example.novalogistic.model.Precio;
 @Repository
 public interface PrecioRepository extends JpaRepository<Precio, Integer>
 {
-    List<Precio> findByPrecioBase(Double precio_base);
-    @Query("SELECT p FROM Precio p WHERE p.precio_base = :precio_base")
-    Precio findByQueryPrecioBase(Double precio_base);    
+    List<Precio> findByPrecioBase(Double precioBase);
+    @Query("SELECT p FROM Precio p WHERE p.precioBase = :precioBase")
+    Precio findByQueryPrecioBase(Double precioBase);    
 }

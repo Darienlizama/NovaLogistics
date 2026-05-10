@@ -39,7 +39,7 @@ public class PrecioService
         log.info("Actualizando el precio con ID : {}", id);
         Precio precioExistente = precioRepository.findById(id)
         .orElseThrow(() -> new RuntimeException("No se puede actualizar el precio, porque no se ha encontrado con la ID: " + id));
-        precioExistente.setPrecio_base(nuevoPrecio.getPrecio_base());
+        precioExistente.setPrecioBase(nuevoPrecio.getPrecioBase());
         return precioRepository.save(precioExistente);
     }
     
@@ -47,7 +47,7 @@ public class PrecioService
     {
         PrecioDTO dto = new PrecioDTO();
         dto.setId(precio.getId());
-        dto.setPrecio_base(precio.getPrecio_base());
+        dto.setPrecio_base(precio.getPrecioBase());
         return dto;
     }   
 

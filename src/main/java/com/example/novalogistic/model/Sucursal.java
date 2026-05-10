@@ -16,8 +16,7 @@ public class Sucursal
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToOne
-    @JoinColumn(name="sucursal_id",nullable=false)
+
     @NotBlank(message = "La dirección no puede estar vacio!")
     private String direccion;
 
