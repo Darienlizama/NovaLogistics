@@ -58,7 +58,7 @@ public class ReclamoService {
         
                 .orElseThrow(() -> new RuntimeException("Auditoría no encontrada"));
         
-            reclamosToUpdate.setEstado_reclamo(reclamo.isEstado_reclamo());
+            reclamosToUpdate.setEstado_reclamo(reclamo.getEstado_reclamo());
             reclamosToUpdate.setDetalle_cliente(reclamo.getDetalle_cliente());
             reclamosToUpdate.setTitulo(reclamo.getTitulo());
             return reclamoRepository.save(reclamosToUpdate);

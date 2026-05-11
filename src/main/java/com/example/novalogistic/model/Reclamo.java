@@ -7,9 +7,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 @Data
 @AllArgsConstructor
@@ -21,19 +23,19 @@ public class Reclamo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "el id no debe estar vacio")
-    @Column(unique = true ,nullable = false)
+    @NotNull(message = "el id no debe estar vacio")
+    @Column(name = "id_cliente", unique = true, nullable = false)
     private Long id_cliente;
 
-
-    @NotBlank(message = "el titulo no debe estar vacio ")
-    @Column(nullable = false)
+    @NotBlank(message = "el titulo no debe estar vacio")
+    @Column(name = "titulo", nullable = false)
     private String titulo;
 
     @NotBlank(message = "el detalle no debe estar vacio")
-    @Column(nullable = false)
+    @Column(name = "detalle_reclamo", nullable = false) 
     private String detalle_cliente;
 
-    @Column(nullable = false)
-    private boolean estado_reclamo;
+    @NotNull(message = "el estado no puede ser nulo")
+    @Column(name = "estado_reclamo", nullable = false)
+    private Boolean estado_reclamo; 
 }
