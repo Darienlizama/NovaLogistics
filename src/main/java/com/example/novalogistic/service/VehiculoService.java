@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.novalogistic.dto.VehiculoDTO;
+import com.example.novalogistic.DTO.VehiculoDTO;
 import com.example.novalogistic.model.Vehiculo;
 import com.example.novalogistic.repository.VehiculoRepository; 
 
