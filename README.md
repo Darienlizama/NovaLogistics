@@ -21,6 +21,26 @@ NovaLogistics es una solución integral basada en **Java Spring Boot** diseñada
 8.  **Sucursales:** Centros de distribución.
 9.  **Envíos:** Módulo de transporte.
 10. **Paquetes:** Detalle de carga.
+    
+##  Guía de Trabajo (Comandos Git)
+
+Usa estos comandos en la terminal de VS Code para gestionar el proyecto:
+
+### Para descargar el proyecto por primera vez:
+```powershell
+git clone [https://github.com/Darienlizama/NovaLogistics.git](https://github.com/Darienlizama/NovaLogistics.git)
+
+# 1. Preparar los archivos modificados
+git add .
+
+# 2. Registrar el avance con un mensaje descriptivo
+git commit -m "Descripción de los cambios realizados"
+
+# 3. Actualizar con cambios de otros compañeros
+git pull origin main
+
+# 4. Subir tus cambios a la nube
+git push origin main
 
 ## ✒️ Autores
 * **Darien Lizama** - [Darienlizama](https://github.com/Darienlizama)
